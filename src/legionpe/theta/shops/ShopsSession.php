@@ -64,7 +64,7 @@ class ShopsSession extends Session{
 		}
 		$inv = $event->getInventory();
 		if($inv instanceof ChestInventory){
-			$class = self::getClassFromCoords($inv->getHolder());
+			self::getClassFromCoords($inv->getHolder());
 		}
 		return true;
 	}
