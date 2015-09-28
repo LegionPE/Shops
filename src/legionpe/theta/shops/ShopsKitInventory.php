@@ -21,10 +21,24 @@ use pocketmine\Player;
 use pocketmine\tile\Chest;
 
 class ShopsKitInventory extends CustomInventory{
-	public function __construct(Chest $chestTile, $kitName){
+	/** @var ShopsSession */
+	private $session;
+	private $kitId;
+	public function __construct(ShopsSession $session, Chest $chestTile, $kitName, $kitId){
+		$this->session = $session;
+		$this->kitId = $kitId;
 		parent::__construct($chestTile, InventoryType::get(InventoryType::DOUBLE_CHEST), [], null, $kitName);
+		$this->reloadItems();
 	}
 	public function openTo(Player $player){
 		$player->addWindow($this);
+		$this->reloadItems();
+	}
+	public function sendContents($target){
+		$this->reloadItems();
+		parent::sendContents($target);
+	}
+	public function reloadItems(){
+
 	}
 }

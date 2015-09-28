@@ -16,16 +16,11 @@
 namespace legionpe\theta\shops;
 
 use legionpe\theta\BasePlugin;
-use legionpe\theta\config\Settings;
 use pocketmine\Player;
 
 class ShopsPlugin extends BasePlugin{
-	private $kitAreas = [];
-
 	public function onEnable(){
 		parent::onEnable();
-		$this->kitAreas[Settings::CLASS_KITPVP] = new ClassKitArea(Settings::CLASS_KITPVP);
-		$this->kitAreas[Settings::CLASS_SPLEEF] = new ClassKitArea(Settings::CLASS_SPLEEF);
 	}
 	protected function createSession(Player $player, array $loginData){
 		return new ShopsSession($this, $player, $loginData);
@@ -36,11 +31,7 @@ class ShopsPlugin extends BasePlugin{
 	public function sendFirstJoinMessages(Player $player){
 		// TODO: Implement sendFirstJoinMessages() method.
 	}
-
-	public function getKitArea($class){
-		if(isset($this->kitAreas[$class])){
-			return $this->kitAreas[$class];
-		}
-		return null;
+	public function getLoginQueryImpl(){
+		return ShopsLoginDataQuery::class;
 	}
 }
