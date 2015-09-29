@@ -1,6 +1,5 @@
 name: LegionPE_Theta_Shops
 api: 1.12.0
-depend: FastTransfer
 authors:
 - PEMapModder
 version: 5.shops.0.1
