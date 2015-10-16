@@ -39,6 +39,5 @@ class ShopsKitInventory extends CustomInventory{
 		parent::sendContents($target);
 	}
 	public function reloadItems(){
-
 	}
 }
