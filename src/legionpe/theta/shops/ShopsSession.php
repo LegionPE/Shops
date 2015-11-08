@@ -18,7 +18,6 @@ namespace legionpe\theta\shops;
 use legionpe\theta\config\Settings;
 use legionpe\theta\Session;
 use pocketmine\block\Block;
-use pocketmine\entity\Effect;
 use pocketmine\event\inventory\InventoryOpenEvent;
 use pocketmine\event\inventory\InventoryTransactionEvent;
 use pocketmine\event\player\PlayerInteractEvent;
@@ -35,12 +34,12 @@ class ShopsSession extends Session{
 	}
 	public function login($method){
 		parent::login($method);
-		$this->getPlayer()->removeAllEffects();
-		$this->getPlayer()->addEffect(Effect::getEffect(Effect::MINING_FATIGUE)->setVisible(false)->setDuration(0x7FFFFF)->setAmplifier(0x7F));
+		// TODO spawn particles
 	}
 	public function getMain(){
 		return $this->main;
 	}
+
 	public function onTransaction(InventoryTransactionEvent $event){
 		if(!parent::onTransaction($event)){
 			return false;
@@ -84,6 +83,10 @@ class ShopsSession extends Session{
 			return true;
 		}
 		return false;
+	}
+
+	public function getProducts(){
+		return $this->getLoginDatum("products");
 	}
 
 	public static function getClassFromCoords(/** @noinspection PhpUnusedParameterInspection */

@@ -16,11 +16,13 @@
 namespace legionpe\theta\shops;
 
 use legionpe\theta\BasePlugin;
+use legionpe\theta\libkit\data\kitpvp\PvpKitProducts;
 use pocketmine\Player;
 
 class ShopsPlugin extends BasePlugin{
 	public function onEnable(){
 		parent::onEnable();
+		PvpKitProducts::init($this);
 	}
 	protected function createSession(Player $player, array $loginData){
 		return new ShopsSession($this, $player, $loginData);
