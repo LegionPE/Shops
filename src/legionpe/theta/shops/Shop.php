@@ -56,4 +56,8 @@ class Shop{
 	public function getPosition(){
 		return $this->position;
 	}
+
+	public function spawn(){
+
+	}
 }

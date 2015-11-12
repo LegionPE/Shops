@@ -37,3 +37,8 @@ class ShopsPlugin extends BasePlugin{
 		return ShopsLoginDataQuery::class;
 	}
 }
+
+/*
+ * TODO
+ * - customize sword and food configs
+ */
